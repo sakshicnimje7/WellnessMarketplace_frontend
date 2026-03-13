@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* --- EARTHY PREMIUM GRADIENT --- */
+  /* Flows from White -> Almond -> Soft Tan */
+  background: linear-gradient(135deg, #ffffff 0%, #eae0d5 50%, #dcd0c0 100%);
+
+  /* Keeps the gradient fixed */
+  background-attachment: fixed;
+  min-height: 100vh;
+
+  color: #0a0908; /* Jet Black Text */
+}
+
+/* --- BUTTON STYLES --- */
+
+/* Primary: Deep Slate Button */
+.btn-primary {
+  @apply bg-primary text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-[#0a0908] transition-all transform hover:-translate-y-0.5;
+}
+
+/* Secondary: White button with Slate border */
+.btn-secondary {
+  @apply bg-white text-primary border-2 border-primary font-bold py-2 px-6 rounded-lg hover:bg-[#eae0d5] transition-all;
+}
+
+/* Smooth Fade In */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
