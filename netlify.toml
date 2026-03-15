@@ -1,7 +1,7 @@
 [build]
   base = "wellness-frontend"
   command = "npm run build"
-  publish = "wellness-frontend/build"
+  publish = "build"
 
 [build.environment]
   NODE_VERSION = "18"
