@@ -1,6 +1,7 @@
 package com.infosys.wmat.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,6 +26,9 @@ public class SecurityConfig {
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
+    @Value("${FRONTEND_URL:*}")
+    private String frontendUrl;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -32,6 +36,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**", "/api/products").permitAll()
+                        .requestMatchers("/api/health", "/actuator/**").permitAll()
                         // ADD "/api/forum/**" HERE:
                         .requestMatchers("/api/orders/**", "/api/user/**", "/api/bookings/**", "/api/reviews/**", "/api/dashboard/**", "/api/forum/**", "/api/doctor/**", "/api/ai/**").authenticated()
                         .anyRequest().authenticated()
@@ -46,7 +51,14 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:3001")); // React Ports
+        // Allow multiple origins including localhost and deployed frontend
+        configuration.setAllowedOrigins(Arrays.asList(
+            "http://localhost:3000", 
+            "http://localhost:3001",
+            "https://localhost:3000",
+            "https://localhost:3001",
+            frontendUrl  // Deployed frontend URL
+        ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
