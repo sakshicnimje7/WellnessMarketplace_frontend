@@ -14,7 +14,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem('token');
       // If no token, redirect or show error (handled by catch)
-      const res = await axios.get('http://localhost:8080/api/dashboard/user', {
+      const res = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/dashboard/user', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setData(res.data);

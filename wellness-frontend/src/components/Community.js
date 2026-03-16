@@ -14,7 +14,7 @@ const Community = () => {
   const fetchQuestions = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:8080/api/forum/questions', {
+      const res = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/forum/questions', {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       setQuestions(res.data);
@@ -31,7 +31,7 @@ const Community = () => {
     }
 
     try {
-      await axios.post('http://localhost:8080/api/forum/ask', { content: newQuestion }, {
+      await axios.post('https://wellnessmarketplace-backend.onrender.com/api/forum/ask', { content: newQuestion }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNewQuestion('');

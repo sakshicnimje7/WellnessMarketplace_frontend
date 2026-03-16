@@ -16,7 +16,7 @@ const Store = () => {
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/api/products', {
+      const response = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/products', {
         headers: token ? { Authorization: `Bearer ${token}` } : {}
       });
       setProducts(response.data);
@@ -31,7 +31,7 @@ const Store = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) { alert("Please login first"); return; }
-      await axios.post('http://localhost:8080/api/orders/place', {
+      await axios.post('https://wellnessmarketplace-backend.onrender.com/api/orders/place', {
         productId: product.id,
         quantity: parseInt(quantity)
       }, { headers: { Authorization: `Bearer ${token}` } });
@@ -45,7 +45,7 @@ const Store = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) { alert("Please login first"); return; }
-      await axios.post('http://localhost:8080/api/reviews', { productId, rating, comment },
+      await axios.post('https://wellnessmarketplace-backend.onrender.com/api/reviews', { productId, rating, comment },
       { headers: { Authorization: `Bearer ${token}` } });
       alert("Review Submitted!");
       setReviewProduct(null);

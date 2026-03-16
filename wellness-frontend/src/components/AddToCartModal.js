@@ -17,7 +17,7 @@ const AddToCartModal = ({ isOpen, onClose, product }) => {
         quantity: quantity
       };
 
-      await axios.post('http://localhost:8080/api/orders/create', payload, {
+      await axios.post('https://wellnessmarketplace-backend.onrender.com/api/orders/create', payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

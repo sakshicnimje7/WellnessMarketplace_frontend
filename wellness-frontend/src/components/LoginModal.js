@@ -15,7 +15,7 @@ const LoginModal = ({ isOpen, onClose }) => {
     setStatus({ type: 'loading', message: 'Verifying credentials...' });
 
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/login', formData);
+      const response = await axios.post('https://wellnessmarketplace-backend.onrender.com/api/auth/login', formData);
       localStorage.setItem('token', response.data.token);
 
       setStatus({ type: 'success', message: 'Login Successful! Redirecting...' });

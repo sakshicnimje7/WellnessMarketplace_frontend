@@ -15,7 +15,7 @@ const DoctorDashboard = () => {
   const fetchDoctorAppointments = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:8080/api/doctor/appointments', {
+      const res = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/doctor/appointments', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSessions(res.data);
@@ -27,7 +27,7 @@ const DoctorDashboard = () => {
   const fetchCurrentProfile = async () => {
     try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:8080/api/user/profile', {
+        const res = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/user/profile', {
             headers: { Authorization: `Bearer ${token}` }
         });
         setProfileData(prev => ({ ...prev, name: res.data.name }));
@@ -41,7 +41,7 @@ const DoctorDashboard = () => {
   const markComplete = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:8080/api/doctor/appointment/${id}/complete`, {}, {
+      await axios.put(`https://wellnessmarketplace-backend.onrender.com/api/doctor/appointment/${id}/complete`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchDoctorAppointments();
@@ -56,7 +56,7 @@ const DoctorDashboard = () => {
       e.preventDefault();
       try {
         const token = localStorage.getItem('token');
-        await axios.put('http://localhost:8080/api/user/practitioner/update', profileData, {
+        await axios.put('https://wellnessmarketplace-backend.onrender.com/api/user/practitioner/update', profileData, {
             headers: { Authorization: `Bearer ${token}` }
         });
         setStatus({ type: 'success', message: 'Profile Updated Successfully!' });

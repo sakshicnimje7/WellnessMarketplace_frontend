@@ -11,7 +11,7 @@ const ReviewModal = ({ isOpen, onClose, product }) => {
   const handleSubmit = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:8080/api/reviews/add', {
+      await axios.post('https://wellnessmarketplace-backend.onrender.com/api/reviews/add', {
         productId: product.id,
         rating: rating,
         comment: comment

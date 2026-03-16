@@ -27,7 +27,7 @@ const Therapies = () => {
     try {
       const token = localStorage.getItem('token');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
-      const res = await axios.get('http://localhost:8080/api/user/practitioners', { headers });
+      const res = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/user/practitioners', { headers });
       setPractitioners(res.data);
     } catch (err) {
       console.error("Failed to fetch doctors", err);
@@ -39,7 +39,7 @@ const Therapies = () => {
     if (!token) return;
 
     try {
-      const res = await axios.get('http://localhost:8080/api/user/profile', {
+      const res = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/user/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUserRole(res.data.role);

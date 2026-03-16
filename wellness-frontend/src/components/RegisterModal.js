@@ -14,7 +14,7 @@ const RegisterModal = ({ isOpen, onClose, onSwitchToLogin }) => {
     setStatus({ type: 'loading', message: 'Creating account...' });
 
     try {
-      await axios.post('http://localhost:8080/api/auth/register', formData);
+      await axios.post('https://wellnessmarketplace-backend.onrender.com/api/auth/register', formData);
       setStatus({ type: 'success', message: 'Registration Successful! Please Login.' });
       setTimeout(() => {
         onClose();

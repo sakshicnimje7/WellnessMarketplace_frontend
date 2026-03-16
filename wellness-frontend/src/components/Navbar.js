@@ -19,7 +19,7 @@ const Navbar = ({ onNavigate }) => {
       setIsLoggedIn(true);
       // FETCH USER ROLE TO SEE IF THEY ARE A DOCTOR
       try {
-        const res = await axios.get('http://localhost:8080/api/user/profile', {
+        const res = await axios.get('https://wellnessmarketplace-backend.onrender.com/api/user/profile', {
             headers: { Authorization: `Bearer ${token}` }
         });
         setUserRole(res.data.role); // 'PRACTITIONER' or 'PATIENT'

@@ -15,7 +15,7 @@ const AiAssistant = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:8080/api/ai/analyze',
+      const response = await axios.post('https://wellnessmarketplace-backend.onrender.com/api/ai/analyze',
         { symptom: symptom },
         { headers: { Authorization: `Bearer ${token}` } }
       );

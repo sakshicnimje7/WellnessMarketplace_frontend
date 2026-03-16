@@ -22,7 +22,7 @@ const BookingModal = ({ isOpen, onClose, doctor }) => {
         date: date // HTML datetime-local sends "2025-12-30T10:00", which Spring Boot likes.
       };
 
-      await axios.post('http://localhost:8080/api/bookings/book', payload, {
+      await axios.post('https://wellnessmarketplace-backend.onrender.com/api/bookings/book', payload, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
