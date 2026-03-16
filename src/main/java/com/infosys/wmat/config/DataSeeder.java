@@ -10,6 +10,7 @@ import com.infosys.wmat.repository.ReviewRepository; // Import ReviewRepo
 import com.infosys.wmat.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Component
+@ConditionalOnProperty(name = "app.seeder.enabled", havingValue = "true", matchIfMissing = true)
 public class DataSeeder implements CommandLineRunner {
 
     @Autowired private ProductRepository productRepository;
