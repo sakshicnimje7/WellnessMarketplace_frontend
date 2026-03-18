@@ -35,11 +35,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults()) // <--- 1. ENABLE CORS
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/products").permitAll()
-                        .requestMatchers("/api/health", "/actuator/**").permitAll()
-                        // ADD "/api/forum/**" HERE:
-                        .requestMatchers("/api/orders/**", "/api/user/**", "/api/bookings/**", "/api/reviews/**", "/api/dashboard/**", "/api/forum/**", "/api/doctor/**", "/api/ai/**").authenticated()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/**").permitAll()  // Allow ALL requests for now
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
